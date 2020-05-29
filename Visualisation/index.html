@@ -90,9 +90,6 @@
               </div>
 
             </div> <!-- Scrolling -->
-
-
-
           </div> <!-- Column -->
         </div> <!-- Row -->
       </div> <!-- Shadow -->
@@ -111,8 +108,8 @@
                 onclick="highlightReasoning()" class="success"><span class="slider round"></span>
             </label>
           </li>
-          <li class="list-group-item">Experience<label class="switch "><input type="checkbox" class="success"><span
-                class="slider round"></span>
+          <li class="list-group-item">Experience<label class="switch "><input type="checkbox" id="expCheck"
+                onclick="highlightExperience()" class="success"><span class="slider round"></span>
             </label>
           </li>
           <li class="list-group-item">Citations<label class="switch "><input type="checkbox" class="success"><span
@@ -149,8 +146,18 @@
       height: 500px;
     }
 
-    mark {
+    .red {
       background: rgb(231, 43, 29);
+      color: black;
+    }
+
+    .blue1 {
+      background: rgb(20, 72, 218);
+      color: black;
+    }
+
+    .blue2 {
+      background: rgb(120, 145, 214);
       color: black;
     }
   </style>
