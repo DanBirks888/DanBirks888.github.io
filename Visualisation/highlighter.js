@@ -13,7 +13,10 @@ function highlightReasoning() {
                 var i;
                 for (i = 0; i < reasoning.length; i++) {
                     instance.mark([reasoning[i].marker], {
-                        accuracy: "exactly",
+                        "accuracy": {
+                            "value": "exactly",
+                            "limiters": [",", "."],
+                        },
                         separateWordSearch: false,
                         className: "red",
                     });
@@ -43,27 +46,31 @@ function highlightExperience() {
                 var i;
                 for (i = 0; i < exp.length; i++) {
                     instance.mark([exp[i].marker], {
-                        accuracy: "exactly",
+                        "accuracy": {
+                            "value": "exactly",
+                            "limiters": [",", "."],
+                        },
                         separateWordSearch: false,
                         className: "blue1",
                     });
                 }
-
                 var a;
                 for (a = 0; a < timex.length; a++) {
                     instance.mark([timex[a]], {
-                        accuracy: "exactly",
+                        "accuracy": {
+                            "value": "exactly",
+                            "limiters": [",", "."],
+                        },
                         separateWordSearch: false,
                         className: "blue2",
                     });
                 }
             });
-
-        if (document.getElementById("expCheck").checked == false) {
-            var instance = new Mark(document.getElementById("articleInfo"));
-            instance.unmark();
-        }
     }
-
+    if (document.getElementById("expCheck").checked == false) {
+        var instance = new Mark(document.getElementById("articleInfo"));
+        instance.unmark();
+    }
 }
+
 
