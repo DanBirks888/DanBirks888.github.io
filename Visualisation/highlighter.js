@@ -40,12 +40,19 @@ function highlightExperience() {
                     data[0].keyword_analysis.keyword_analysis.experience_9;
                 var timex =
                     data[0].event_analysis.event_analysis.timex_events;
+                var verb =
+                    data[0].event_analysis.event_analysis.verb_events;
+                var nltk =
+                    data[0].named_entity_analysis.named_entity_analysis.nltk_named_entities;
+                var pronoun =
+                    data[0].named_entity_analysis.named_entity_analysis.pronouns;
+
 
                 var instance = new Mark(document.getElementById("articleInfo"));
 
-                var i;
-                for (i = 0; i < exp.length; i++) {
-                    instance.mark([exp[i].marker], {
+                var a;
+                for (a = 0; a < exp.length; a++) {
+                    instance.mark([exp[a].marker], {
                         "accuracy": {
                             "value": "exactly",
                             "limiters": [",", "."],
@@ -54,15 +61,50 @@ function highlightExperience() {
                         className: "blue1",
                     });
                 }
-                var a;
-                for (a = 0; a < timex.length; a++) {
-                    instance.mark([timex[a]], {
+                var b;
+                for (b = 0; b < timex.length; b++) {
+                    instance.mark([timex[b]], {
                         "accuracy": {
                             "value": "exactly",
                             "limiters": [",", "."],
                         },
                         separateWordSearch: false,
                         className: "blue2",
+                    });
+                }
+                var c;
+                for (c = 0; c < verb.length; c++) {
+                    var vb = verb[c];
+                    instance.mark([vb[0]], {
+                        "accuracy": {
+                            "value": "exactly",
+                            "limiters": [",", "."],
+                        },
+                        separateWordSearch: false,
+                        className: "blue3",
+                    });
+                }
+                var d;
+                for (d = 0; d < nltk.length; d++) {
+                    instance.mark([nltk[d]], {
+                        "accuracy": {
+                            "value": "exactly",
+                            "limiters": [",", "."],
+                        },
+                        separateWordSearch: false,
+                        className: "blue4",
+                    });
+                }
+                var e;
+                for (e = 0; e < pronoun.length; e++) {
+                    var pn = pronoun[e];
+                    instance.mark([pn[0]], {
+                        "accuracy": {
+                            "value": "exactly",
+                            "limiters": [",", "."],
+                        },
+                        separateWordSearch: false,
+                        className: "blue5",
                     });
                 }
             });
