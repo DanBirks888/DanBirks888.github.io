@@ -10,6 +10,7 @@
   <script src="parser.js"></script>
   <script src="highlighter.js"></script>
   <link href="button.css" rel="stylesheet" type="text/css">
+  <link href="hover.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
     <div class="container">
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
         <h2>Metadata</h2>
-        <h5 id="artName">Article Name:
+        <h5 id="artName" class="hover-reveal" data-tooltip="This is the Article Name">Article Name:
           <script type="text/javascript" language="JavaScript"> getArticleName();</script>
         </h5>
         <h5 id="articleURL">Article URL:
@@ -37,6 +38,7 @@
         <h5 id="mimeType">Mime Type:
           <script type="text/javascript" language="JavaScript"> getMimeType();</script>
         </h5>
+        <div class="div-tooltip"></div>
       </div>
     </div>
   </div>
@@ -177,6 +179,7 @@
     }
   </style>
   <!-- For the tabs -->
+  <script src="tooltip.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script>
