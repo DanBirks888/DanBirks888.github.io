@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<xs:schema>
+    <xs:schema xmlns:xs="http://www.danbirks888.github.io/Visualisation" targetNamespace="https://www.danbirks888.github.io/Visualisation" 
+        xmlns="https://www.danbirks888.github.io" elementFormDefault="qualified">
+
+        <xs:element name="greyLiterature" type="xs:string"/>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="markedUp" type="xs:string"/>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="extracted_html" type="xs:string"/>
+                        <xs:element name="mime_type" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reasoning" type="xs:string"/>
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="reasoning_86" type="xs:string"/>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="marker" type="xs:string"/>
+                            <xs:element name="marker_tuple" type="xs:string"/>
+                            <xs:element name="ngrams_count" type="xs:integer"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="experience" type="xs:string"/>
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="experience_9" type="xs:string"/>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="marker" type="xs:string"/>
+                            <xs:element name="marker_tuple" type="xs:string"/>
+                            <xs:element name="ngrams_count" type="xs:integer"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:element name="nltk_named_entities" type="xs:string"/>
+                    <xs:element name="pronouns" type="xs:string"/>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="pronoun" type="xs:string"/>
+                            <xs:element name="pronounType" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:element name="timex-events" type="xs:string"/>
+                    <xs:element name="verb-events" type="xs:string"/>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="verb" type="xs:string"/>
+                            <xs:element name="verbType" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="citations" type="xs:string"/>
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="citations_analysis" type="xs:string"/>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="all_uris" type="xs:string"/>
+                            <xs:element name="external_uris" type="xs:string"/>
+                            <xs:element name="classified_external_uris" type="xs:string"/>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="uri" type="xs:string"/>
+                                    <xs:element name="domain" type="xs:string"/>
+                                    <xs:element name="classifications" type="xs:string"/>
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="evidence_type" type="xs:string"/>
+                                            <xs:element name="evidence_name" type="xs:string"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+    </xs:schema>
