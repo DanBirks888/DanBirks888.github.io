@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="article">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element name="title">
+						<xs:complexType mixed="true">
+							<xs:sequence>
+								<xs:element maxOccurs="unbounded" name="evidence">
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="type" type="xs:string" use="required" />
+												<xs:attribute name="specific-type" type="xs:string" use="required" />
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element maxOccurs="unbounded" name="evidence">
+						<xs:complexType mixed="true">
+							<xs:sequence minOccurs="0">
+								<xs:element name="evidence">
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="type" type="xs:string" use="required" />
+												<xs:attribute name="specific-type" type="xs:string" use="required" />
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="type" type="xs:string" use="required" />
+							<xs:attribute name="specific-type" type="xs:string" use="optional" />
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="argumentation">
+						<xs:complexType>
+							<xs:simpleContent>
+								<xs:extension base="xs:string">
+									<xs:attribute name="type" type="xs:string" use="required" />
+								</xs:extension>
+							</xs:simpleContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="experience">
+						<xs:complexType>
+							<xs:simpleContent>
+								<xs:extension base="xs:string">
+									<xs:attribute name="type" type="xs:string" use="required" />
+								</xs:extension>
+							</xs:simpleContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
