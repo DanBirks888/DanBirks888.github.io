@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+    <article type='clarity_of_writing_score'></article>
+
+    <argumentation type='reasoning'></argumentation>
+    <argumentation type='claim'></argumentation>
+    <argumentation type='conclusion'></argumentation>
+
+    <evidence type='experience' sub-type='named-entity'></evidence>
+    <evidence type='experience' sub-type='verb-event'></evidence>
+    <evidence type='experience' sub-type='timex-event'></evidence>
+    <evidence type='experience' sub-type='pronoun'></evidence>
+
+    <evidence type='code_snippet'></evidence>
+    <evidence type='table'></evidence>
+    <evidence type='image'></evidence>
+    <evidence type='data_and_statistics'></evidence>
+
+    <evidence type='citation' sub-type='self'></evidence>
+
+    <evidence type='citation' sub-type='external' classification='RESEARCH'></evidence>
+    <evidence type='citation' sub-type='external' classification='RESEARCH_SEARCH'></evidence>
+    <evidence type='citation' sub-type='external' classification='DEVELOPER'></evidence>
+    <evidence type='citation' sub-type='external' classification='EDUCATION'></evidence>
+    <evidence type='citation' sub-type='external' classification='NEWS_AND_MAGAZINES'></evidence>
+    <evidence type='citation' sub-type='external' classification='SOCIAL_MEDIA'></evidence>
+    <evidence type='citation' sub-type='external' classification='GOVERNMENT'></evidence>
+    <evidence type='citation' sub-type='external' classification='Q_AND_A'></evidence>
+    <evidence type='citation' sub-type='external' classification='REPOSITORY'></evidence>
+    <evidence type='citation' sub-type='external' classification='SANDBOX'></evidence>
+    <evidence type='citation' sub-type='external' classification='E_COMMERCE'></evidence>
+    <evidence type='citation' sub-type='external' classification='FORUM'></evidence>
+    <evidence type='citation' sub-type='external' classification='BLOG'></evidence>
+    <evidence type='citation' sub-type='external' classification='JOB_BOARD'></evidence>
+    <evidence type='citation' sub-type='external' classification='WIKI'></evidence>
+    <evidence type='citation' sub-type='external' classification='JOEL'></evidence>
+    <evidence type='citation' sub-type='external' classification='DOCUMENTATION'></evidence>
+    <evidence type='citation' sub-type='external' classification='ASSETS'></evidence>
+    <evidence type='citation' sub-type='external' classification='SHORT_URL'></evidence>
+    <evidence type='citation' sub-type='external' classification='LEARNING'></evidence>
+    <evidence type='citation' sub-type='external' classification='RESOURCES'></evidence>
+    <evidence type='citation' sub-type='external' classification='SUPPORT'></evidence>
+    <evidence type='citation' sub-type='external' classification='ADVERTS'></evidence>
+    <evidence type='citation' sub-type='external' classification='EVENTS'></evidence>
+    <evidence type='citation' sub-type='external' classification='ORGANISATIONS_AND_TECHNOLOGIES'></evidence>
+</article>
