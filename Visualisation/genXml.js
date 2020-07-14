@@ -81,25 +81,42 @@ function generateXML() {
 
             // Annotated Pronouns
 
-            // var pronoun =
-            //     data[0].named_entity_analysis.named_entity_analysis.pronouns;
-            // for (f in pronoun) {
-            //     var pro = pronoun[f];
-            //     var p = pro[0];
-            //     var regex_pronoun = new RegExp("\\b" + pro[0], "gmi");
-            //     var xml_pronoun = "<evidence type='experience' sub-type='pronoun'>" + pro[0] + "</evidence>"
-            //     output = output.replace(regex_pronoun, xml_pronoun);
-            // }
+            var pronoun =
+                data[0].named_entity_analysis.named_entity_analysis.pronouns;
+            for (f in pronoun) {
+                var pro = pronoun[f];
+                var p = pro[0];
+                // console.log(p);
+                if (p.length == 1) {
+                    var p2 = p + " ";
+                    var regex_pronoun = new RegExp("\\b" + p2, "gmi");
+                } else {
+                    var regex_pronoun = new RegExp("\\b" + p, "gmi");
+                }
+                var xml_pronoun = "<evidence type='experience' sub-type='pronoun'>" + p + "</evidence>"
+                output = output.replace(regex_pronoun, xml_pronoun);
+            }
 
-            // var citations = 
-            //        data[0].citations_analysis.citations_analysis.classified_external_uris;
-            //        for (g in citations) {
-            //            var domain = citations[g].domain;
-            //            var cit = citations[g].classifications[0];
-            //            console.log(cit[g]);
-            //        }
+            // Code for basic citation extraction
+            // Shows all basic domain names with no detail
+            // Still has 10 undefined
+            var citations = 
+                   data[0].citations_analysis.citations_analysis.classified_external_uris;
+                   for (g in citations) {
+                    var domain = citations[g].domain;
+                    console.log(domain);
+                }
 
-                   
+            // Code for iterating through citations and classifications 
+            // Gets stuck at array 12 because it provides a ' or " as a word
+            var citations1 = 
+                   data[0].citations_analysis.citations_analysis.classified_external_uris;
+                    for (g in citations1) {
+                        var domain = citations1[g].domain;
+                        var cit = citations1[g].classifications[0];
+                        console.log(cit[g]);
+                    }
+                        
             
             // End of XML File
             output += "</article>";
