@@ -22,65 +22,42 @@ function generateXML() {
             var count_hr = (output.match(/<a href=("http:|"https:)\/\//g) || []).length;
             var hr = /<a href=("http:|"https:|)\/\//g;
             var test = new RegExp(hr, "g");
-            var i = 0;
-            for (stuff in count_hr) {
-                output.replace(hr, "");
-            }
-            // for (hr in count_hr) {
-            //     var removehr = new RegExp(headend, "gmi");
-            //     output.replace(removeh, "")
-            // }
-            console.log(count_hr);
+            output = output.replace(hr, "");
 
 
+            // Annotate Citations Elements
+            // Isnt quite returning everything correctly yet!
             
-
-            // console.log(output);
-
-            // Annotate Citations Elementsz
             // var citations = 
-            //        data[0].citations_analysis.citations_analysis.classified_external_uris;
-            //        for (g in citations) {
-            //         var domain = citations[g].domain;
-            //         var regex_cit = new RegExp(domain, "gmi");
-            //         var class_array = citations[g].classifications;
-            //         var cit = class_array[g];
-            //         var classify = cit[0];
-            //         console.log(classify);
-                    // for (cl in citations[g].classifications[cl[0]]) {
-                    //     var synt = "'" + cl + "'; ";
-                    //     var classify;
-                    //     classify += synt;
-                    // }
-                    // console.log(classify);
-                    // var xml_cit = "<evidence type='citation' sub-type='external' classification='" + classify + "'" + domain + "</evidence>"
-                    // output = output.replace(regex_cit,xml_cit);
-                    // console.log(domain);
-                // }
-
-            // Code for iterating through citations and classifications 
-            // Gets stuck at array 12 because it provides a ' or " as a word
-            // var citations1 = 
-            //        data[0].citations_analysis.citations_analysis.classified_external_uris;
-            //         for (g in citations1) {
-            //             var domain = citations1[g].domain;
-            //             var cit = citations1[g].classifications[0];
-            //             console.log(cit[g]);
-            //         }
+            // data[0].citations_analysis.citations_analysis.classified_external_uris;
+            // for (g in citations) {
+            //     var domain = citations[g].domain;
+            //     var regex_cit = new RegExp(domain, "gmi");
+            //     var class_array = citations[g].classifications;
+            //     var cit = class_array[g];
+            //     var classify = cit[0];
+            //     for (cl in citations[g].classifications) {
+            //         var synt = "'" + citations[g].classifications[cl][0] + "' ";
+            //         classify += synt;
+            //     }
+            //     console.log(classify);
+            //     var xml_cit = "<evidence type='citation' sub-type='external' classification='" + classify + "'" + domain + "</evidence>"
+            //     output = output.replace(regex_cit,xml_cit);
+            // }
 
 
             // Annotate Reasoning Elements
             // Only returns the right amount without the bracket before the variable
             // Outcasts any array word which doesnt only show up once in the array
 
-            // var reasoning =
-            //     data[0].keyword_analysis.keyword_analysis.reasoning_86;
-            // for (a in reasoning) {
-            //     var reason = reasoning[a].marker;
-            //     var regex_reason = new RegExp(reason + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
-            //     var xml_reason = "<argumentation type='reasoning'>" + reason + "</argumentation>"
-            //     output = output.replace(regex_reason,xml_reason);
-            // }
+            var reasoning =
+                data[0].keyword_analysis.keyword_analysis.reasoning_86;
+            for (a in reasoning) {
+                var reason = reasoning[a].marker;
+                var regex_reason = new RegExp('(\\ |\\“|\\-)' + reason + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
+                var xml_reason = "<argumentation type='reasoning'>" + reason + "</argumentation>"
+                output = output.replace(regex_reason,xml_reason);
+            }
 
             // Annotate Personal Experience Elements
             // Only 41 In JSON but returns 48
