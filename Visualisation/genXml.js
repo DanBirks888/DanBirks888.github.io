@@ -32,24 +32,23 @@ function generateXML() {
              output += oldArticle;
             
             // Annotate Citations Elements
-            // Isnt quite returning everything correctly yet!
             var citations = 
             data[0].citations_analysis.citations_analysis.classified_external_uris;
             for (g in citations) {
                 var domain = citations[g].domain;
-                console.log(domain);
                 var regex_cit = new RegExp(domain, "gmi");
-                var class_array = citations[g].classifications;
-                var cit = class_array[g];
-                var classify = cit[0];
-                for (cl in citations[g].classifications) {
-                    var synt = "'" + citations[g].classifications[cl][0] + "' ";
-                    classify += synt;
+                var clif = citations[g].classifications;
+                for (cl in clif) {
+                    var g1 = "'" + clif[cl][0] + "' ";
+                    var g2 = g2 + g1;
+                    var g3 = g2.slice(" ",-1);
                 }
-                console.log(classify);
-                var xml_cit = "<evidence type='citation' sub-type='external' classification='" + classify + "'" + domain + "</evidence>"
-                output = output.replace(regex_cit,xml_cit);
+                    console.log("<evidence type='citation' sub-type='external' classification=" + g3 + ">" + "</evidence>");
+                    g2 = "";
+                // var xml_cit = "<evidence type='citation' sub-type='external' classification=" + xmlReady2 + ">" + regex_cit + "</evidence>";
+                // output = output.replace(regex_cit,xml_cit);
             }
+           
 
 
             // Annotate Reasoning Elements
