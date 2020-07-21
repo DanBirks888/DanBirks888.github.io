@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<article='readability_score'>
+<article readability_score="47">
 
     <argumentation type='reasoning'></argumentation>
     <argumentation type='claim'></argumentation>
@@ -18,6 +18,6 @@
 
     <evidence type='citation' sub-type='self'></evidence>
 
-    <evidence type='citation' sub-type='external' classification='RESEARCH, RESEARCH_SEARCH' 'DEVELOPER' 'EDUCATION' 'NEWS_AND_MAGAZINES' 'SOCIAL_MEDIA' 'GOVERNMENT' 'Q_AND_A' 'REPOSITORY' 'SANDBOX' 'E_COMMERCE' 'FORUM' 'BLOG' 'JOB_BOARD' 'WIKI' 'JOEL' 'DOCUMENTATION' 'ASSETS' 'SHORT_URL' 'LEARNING' 'RESOURCES' 'SUPPORT' 'ADVERTS' 'EVENTS' 'ORGANISATIONS_AND_TECHNOLOGIES'></evidence>
+    <evidence type='citation' sub-type='external' classification='[RESEARCH, RESEARCH_SEARCH, DEVELOPER EDUCATION, NEWS_AND_MAGAZINES, SOCIAL_MEDIA, GOVERNMENT, Q_AND_A, REPOSITORY, SANDBOX, E_COMMERCE, FORUM, BLOG, JOB_BOARD, WIKI, JOEL, DOCUMENTATION, ASSETS, SHORT_URL, LEARNING, RESOURCES, SUPPORT, ADVERTS, EVENTS, ORGANISATIONS_AND_TECHNOLOGIES]'></evidence>
     
 </article>

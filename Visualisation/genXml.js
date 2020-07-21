@@ -38,30 +38,30 @@ function generateXML() {
                 var domain = citations[g].domain;
                 var regex_cit = new RegExp(domain + ".+?(?= )", "gmi");
                 var clif = citations[g].classifications;
-                var g2 = "";
+                var citList = "'[";
                 for (cl in clif) {
-                    var g1 = "'" + clif[cl][0] + "' ";
-                    g2 += g1;
-                    var g3 = g2.slice(" ",-1);
+                    var cite = clif[cl][0] + ", ";
+                    citList += cite;
+                    var splicedCit = citList.slice(" ",-2);
                 }
-                    console.log("<evidence type='citation' sub-type='external' classification=" + g3 + ">" + "</evidence>");
-                    g2 = "";
-                var xml_cit = "<evidence type='citation' sub-type='external' classification=" + g3 + ">" + regex_cit + "</evidence>";
+                // console.log("<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + "</evidence>");
+                citList = "";
+                var xml_cit = "<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + domain + "</evidence>";
+                // var xml_cit = "<test>" + domain + "</test>";
+                // output = output.replace(regex_cit,xml_cit);
+            }
+
+            var citations = 
+            data[0].citations_analysis.citations_analysis.classified_external_uris;
+            for (dup in citations) {
+                
+            }
+            for (g in citations) {
+                var domain = citations[g].domain;
+                var regex_cit = new RegExp(domain, "gmi");
                 var xml_cit = "<test>" + domain + "</test>";
                 output = output.replace(regex_cit,xml_cit);
             }
-
-            // var citations = 
-            // data[0].citations_analysis.citations_analysis.classified_external_uris;
-            // for (dup in citations) {
-                
-            // }
-            // for (g in citations) {
-            //     var domain = citations[g].domain;
-            //     var regex_cit = new RegExp(domain, "gmi");
-            //     var xml_cit = "<test>" + domain + "</test>";
-            //     output = output.replace(regex_cit,xml_cit);
-            // }
 
 
             // Annotate Reasoning Elements
@@ -73,8 +73,8 @@ function generateXML() {
             for (a in reasoning) {
                 var reason = reasoning[a].marker;
                 var regex_reason = new RegExp('(\\ |\\“|\\-)' + reason + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
-                var xml_reason = "<argumentation type='reasoning'>" + reason + "</argumentation>"
-                output = output.replace(regex_reason,xml_reason);
+                var xml_reason = "<argumentation type='reasoning'>" + reason + "</argumentation>";
+                // output = output.replace(regex_reason,xml_reason);
             }
 
             // Annotate Personal Experience Elements
@@ -85,9 +85,9 @@ function generateXML() {
                 data[0].keyword_analysis.keyword_analysis.experience_9;
             for (b in exp) {
                 var exper = exp[b].marker;
-                var regex1 = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)' + exper + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
-                var xml_evidence = "<evidence type='experience' sub-type='personal-experience'>" + exper + "</evidence>"
-                output = output.replace(regex1,xml_evidence);
+                var exp_regex = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + exper + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                var xml_evidence = "<evidence type='experience' sub-type='personal-experience'>" + exper + "</evidence>";
+                // output = output.replace(exp_regex,xml_evidence);
             }
                 
             // Annotate Time Events
@@ -96,9 +96,9 @@ function generateXML() {
                 data[0].event_analysis.event_analysis.timex_events;
             for (c in timex) {
                 var ti = timex[c];
-                var regex_timex = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;)\\" + ti + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;)", "gmi");
-                var xml_timex = "<evidence type='experience' sub-type='timex-event'>" + ti + "</evidence>"
-                output = output.replace(regex_timex, xml_timex);
+                var regex_timex = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;\\“|\\*)\\' + ti + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                var xml_timex = "<evidence type='experience' sub-type='timex-event'>" + ti + "</evidence>";
+                // output = output.replace(regex_timex, xml_timex);
             }
 
             // Annotate Verb Events
@@ -109,21 +109,21 @@ function generateXML() {
             for (d in verb) {
                 var ve = verb[d];
                 var ver = ve[0];
-                var regex_verb = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)' + ver + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
-                var xml_verb = "<evidence type='experience' sub-type='verb-event'>" + ver + "</evidence>"
+                var regex_verb = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + ver + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi"); 
+                var xml_verb = "<evidence type='experience' sub-type='verb-event'>" + ver + "</evidence>";
+                // console.log(regex_verb);
                 output = output.replace(regex_verb, xml_verb);
                 }
 
             // Annotate NLTK Named Entities
-            // Close Enough!
 
             var nltk =
                 data[0].named_entity_analysis.named_entity_analysis.nltk_named_entities;
             for (e in nltk) {
                 var nl = nltk[e];
-                var regex_nltk = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)' + nl + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
-                var xml_nltk = "<evidence type='experience' sub-type='named-entity'>" + nl + "</evidence>"
-                output = output.replace(regex_nltk, xml_nltk);
+                var regex_nltk = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + nl + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                var xml_nltk = "<evidence type='experience' sub-type='named-entity'>" + nl + "</evidence>";
+                // output = output.replace(regex_nltk, xml_nltk);
             }
 
             // Annotated Pronouns
@@ -133,9 +133,9 @@ function generateXML() {
             for (f in pronoun) {
                 var pro = pronoun[f];
                 var p = pro[0];
-                var regex_pronoun = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;)\\" + p + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;)", "gmi");
-                var xml_pronoun = "<evidence type='experience' sub-type='pronoun'>" + p + "</evidence>"
-                output = output.replace(regex_pronoun, xml_pronoun);
+                var regex_pronoun = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)\\" + p + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)", "gmi");
+                var xml_pronoun = "<evidence type='experience' sub-type='pronoun'>" + p + "</evidence>";
+                // output = output.replace(regex_pronoun, xml_pronoun);
             }
 
 

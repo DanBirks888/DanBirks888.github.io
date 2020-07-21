@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="article">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="argumentation">
+					<xs:complexType>
+						<xs:attribute name="type" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" name="evidence">
+					<xs:complexType>
+						<xs:attribute name="type" type="xs:string" use="required" />
+						<xs:attribute name="sub-type" type="xs:string" use="optional" />
+						<xs:attribute name="classification" type="xs:string" use="optional" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="readability_score" type="xs:unsignedByte" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
