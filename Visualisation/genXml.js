@@ -34,62 +34,26 @@ function generateXML() {
             // Annotate Citations Elements
             var citations = 
             data[0].citations_analysis.citations_analysis.classified_external_uris;
-            for (g in citations) {
-                var domain = citations[g].domain;
+            const newCitations = Array.from(new Set(citations.map(a => a.domain)))
+            .map(domain => {
+            return citations.find(a => a.domain === domain)
+            })
+            for (g in newCitations) {
+                var domain = newCitations[g].domain;
                 var regex_cit = new RegExp(domain + ".+?(?= )", "gmi");
-                var clif = citations[g].classifications;
+                var clif = newCitations[g].classifications;
                 var citList = "'[";
                 for (cl in clif) {
                     var cite = clif[cl][0] + ", ";
                     citList += cite;
                     var splicedCit = citList.slice(" ",-2);
                 }
-                // console.log("<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + "</evidence>");
                 citList = "";
-                // var xml_cit = "<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + domain + "</evidence>";
-                // var xml_cit = "<test>" + domain + "</test>";
-                // output = output.replace(regex_cit,xml_cit);
+                var xml_cit = "<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + domain + "</evidence>";
+                output = output.replace(regex_cit,xml_cit);
             }
 
-             // console.log(citations);
-
-            // function removeDuplicates(array) {
-            //     return array.filter((a, b) => array.indexOf(a) === b)
-            //   };
-            
-            var citations = 
-            data[0].citations_analysis.citations_analysis.classified_external_uris;
-
-            const newCitations = Array.from(new Set(citations.map(a => a.domain)))
-            .map(domain => {
-            return citations.find(a => a.domain === domain)
-            })
-            console.log(newCitations);
-
-            // console.log(citations);
-            // citations.filter((a, b) => citations.indexOf(a) === b);
-            // console.log(citations);
-            
-            //   citations.filter((a, b) => 
-            //     {
-            //     console.log(a.domain + " " + citations[b].domain);
-            //     return a.domain === b.domain;
-            //     });
-            //   var test = removeDuplicates(citations);
-            //   console.log(test);
-
-            // for (g in citations) {
-            //     var domain = citations[g].domain;
-            //     var regex_cit = new RegExp(domain, "gmi");
-            //     var xml_cit = "<test>" + domain + "</test>";
-            //     output = output.replace(regex_cit,xml_cit);
-            // }
-
-
             // Annotate Reasoning Elements
-            // Only returns the right amount without the bracket before the variable
-            // Outcasts any array word which doesnt only show up once in the array
-
             var reasoning =
                 data[0].keyword_analysis.keyword_analysis.reasoning_86;
             for (a in reasoning) {
@@ -100,9 +64,6 @@ function generateXML() {
             }
 
             // Annotate Personal Experience Elements
-            // Only 41 In JSON but returns 48
-            // Adding in the quotation marks has decreased search result to 38
-
             var exp =
                 data[0].keyword_analysis.keyword_analysis.experience_9;
             for (b in exp) {
@@ -113,7 +74,6 @@ function generateXML() {
             }
                 
             // Annotate Time Events
-
             var timex =
                 data[0].event_analysis.event_analysis.timex_events;
             for (c in timex) {
@@ -124,8 +84,6 @@ function generateXML() {
             }
 
             // Annotate Verb Events
-            // The reason it wasnt working was because some verbs were class as ' or * which confused regex without a \\ to confirm
-           
             var verb =
                 data[0].event_analysis.event_analysis.verb_events;
             for (d in verb) {
@@ -138,7 +96,6 @@ function generateXML() {
                 }
 
             // Annotate NLTK Named Entities
-
             var nltk =
                 data[0].named_entity_analysis.named_entity_analysis.nltk_named_entities;
             for (e in nltk) {
@@ -149,7 +106,6 @@ function generateXML() {
             }
 
             // Annotated Pronouns
-
             var pronoun =
                 data[0].named_entity_analysis.named_entity_analysis.pronouns;
             for (f in pronoun) {
@@ -160,7 +116,6 @@ function generateXML() {
                 output = output.replace(regex_pronoun, xml_pronoun);
             }
 
-
             // End of XML File
             output += "</article>";
             // Show In Console
@@ -170,6 +125,15 @@ function generateXML() {
 }
 
 
+            // console.log("<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + "</evidence>");
+
+            // var citations = 
+            // data[0].citations_analysis.citations_analysis.classified_external_uris;
+            // const newCitations = Array.from(new Set(citations.map(a => a.domain)))
+            // .map(domain => {
+            // return citations.find(a => a.domain === domain)
+            // })
+            // console.log(newCitations);
 
             // Different REGEX Patterns Used to remove HTML
 
@@ -178,5 +142,3 @@ function generateXML() {
             // var test = new RegExp(head, "g");
             // var test = new RegExp(hr, "g");
             // var hr2 = /(<a href="#tab-[1-9]">|\* <a href="#tab-[1-9]">|*<a href="#[a-z])/g;
-            
-
