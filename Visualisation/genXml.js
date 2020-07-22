@@ -31,27 +31,7 @@ function generateXML() {
             // Add Filtered Article to output
              output += oldArticle;
             
-            // Annotate Citations Elements
-            var citations = 
-            data[0].citations_analysis.citations_analysis.classified_external_uris;
-            const newCitations = Array.from(new Set(citations.map(a => a.domain)))
-            .map(domain => {
-            return citations.find(a => a.domain === domain)
-            })
-            for (g in newCitations) {
-                var domain = newCitations[g].domain;
-                var regex_cit = new RegExp(domain + ".+?(?= )", "gmi");
-                var clif = newCitations[g].classifications;
-                var citList = "'[";
-                for (cl in clif) {
-                    var cite = clif[cl][0] + ", ";
-                    citList += cite;
-                    var splicedCit = citList.slice(" ",-2);
-                }
-                citList = "";
-                var xml_cit = "<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + domain + "</evidence>";
-                output = output.replace(regex_cit,xml_cit);
-            }
+            
 
             // Annotate Reasoning Elements
             var reasoning =
@@ -116,6 +96,27 @@ function generateXML() {
                 output = output.replace(regex_pronoun, xml_pronoun);
             }
 
+            // Annotate Citations Elements
+            var citations = 
+            data[0].citations_analysis.citations_analysis.classified_external_uris;
+            const newCitations = Array.from(new Set(citations.map(a => a.domain)))
+            .map(domain => {
+            return citations.find(a => a.domain === domain)
+            })
+            for (g in newCitations) {
+                var domain = newCitations[g].domain;
+                var regex_cit = new RegExp(domain + ".+?(?= )", "gmi");
+                var clif = newCitations[g].classifications;
+                var citList = "'[";
+                for (cl in clif) {
+                    var cite = clif[cl][0] + ", ";
+                    citList += cite;
+                    var splicedCit = citList.slice(" ",-2);
+                }
+                citList = "";
+                var xml_cit = "<evidence type='citation' sub-type='external' classification=" + splicedCit + "]'>" + domain + "</evidence>";
+                output = output.replace(regex_cit,xml_cit);
+            }
             // End of XML File
             output += "</article>";
             // Show In Console
