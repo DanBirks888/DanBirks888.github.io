@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
   <script src="parser.js"></script>
-  <script src="genXml.js"></script>
+  <script src="exportXML.js"></script>
   <script src="highlighter.js"></script>
+  <script src="xmlHighlighter.js"></script>
   <link href="button.css" rel="stylesheet" type="text/css">
-  <link href="hover.css" rel="stylesheet" type="text/css">
+  <link href="./Extras/hover.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -109,7 +110,7 @@
                         onclick="highlightExperience()" class="success"><span class="slider round"></span>
                     </label>
                   </li>
-                  <li class="list-group-item">Citations<label class="switch "><input type="checkbox"
+                  <li class="list-group-item">Citations<label class="switch "><input type="checkbox" id="citCheck"
                         class="success"><span class="slider round"></span>
                     </label>
                   </li>
@@ -118,7 +119,7 @@
                     </label>
                   </li>
                   <p></p>
-                  <button type="button" class="btn btn-outline-secondary btn-xl" id="export" onclick="generateXML()">
+                  <button type="button" class="btn btn-outline-secondary btn-xl" id="export" onclick="exportXML()">
                     EXPORT
                   </button> <!-- Export Button -->
                   <p></p>
@@ -181,6 +182,7 @@
   </style>
   <!-- For the tabs -->
   <script src="tooltip.js"></script>
+  <script src="FileSaver.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script>

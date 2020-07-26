@@ -1,0 +1,25 @@
+   // Download functionality
+            var element = document.createElement('a');
+            element.style.display = 'none';
+
+            // Define the data of the file using encodeURIComponent
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(output));
+
+            // Add the download attribute of the hidden link
+            element.setAttribute('download'. filename);
+            document.body.appendChild(element);
+
+            // Simulate click of the created link
+            element.click();
+
+            document.body.removeChild(element);
+
+            // When the user clicks the download button, start downoad
+            // Start the file download
+            document.getElementById("download-btn").addEventListener("click", function() {
+                //Generate download of hello.txt file with some content
+                var text = document.getElementById("text-val").value;
+                var filename = document.getElementById("filename").value;
+
+                download(filename, text);
+            }, false);
