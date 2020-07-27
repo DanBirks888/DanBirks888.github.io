@@ -9,7 +9,6 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
   <script src="parser.js"></script>
   <script src="exportXML.js"></script>
-  <script src="highlighter.js"></script>
   <script src="xmlHighlighter.js"></script>
   <link href="button.css" rel="stylesheet" type="text/css">
   <link href="./Extras/hover.css" rel="stylesheet" type="text/css">
@@ -80,17 +79,17 @@
 
               <div class="tab-pane fade" id="rea8" role="tabpanel" aria-labelledby="nav-reason-tab">
                 <p id="reasonInfo" class="text-justify"></p>
-                <script type="text/javascript" language="JavaScript"> getReasoning();</script>
+                <!-- <script type="text/javascript" language="JavaScript"> getReasoning();</script> -->
               </div>
 
               <div class="tab-pane fade" id="evi8" role="tabpanel" aria-labelledby="nav-evidence-tab">
                 <p id="evidenceInfo" class="text-justify"></p>
-                <script type="text/javascript" language="JavaScript"> getEvidence();</script>
+                <!-- <script type="text/javascript" language="JavaScript"> getEvidence();</script> -->
               </div>
 
               <div class="tab-pane fade" id="cit8" role="tabpanel" aria-labelledby="nav-citation-tab">
                 <p id="citationInfo" class="text-justify"></p>
-                <script type="text/javascript" language="JavaScript"> getCitations();</script>
+                <!-- <script type="text/javascript" language="JavaScript"> getCitations();</script> -->
               </div>
 
             </div> <!-- Scrolling -->
@@ -111,7 +110,7 @@
                     </label>
                   </li>
                   <li class="list-group-item">Citations<label class="switch "><input type="checkbox" id="citCheck"
-                        class="success"><span class="slider round"></span>
+                        onclick="highlightCitations()" class="success"><span class="slider round"></span>
                     </label>
                   </li>
                   <li class="list-group-item">Code<label class="switch "><input type="checkbox" class="success">
@@ -149,6 +148,17 @@
     .overflow-auto {
       height: 500px;
     }
+
+    .blank {
+      background: rgb(255, 255, 255);
+      color: black;
+    }
+
+    .purple {
+      background: rgb(162, 25, 216);
+      color: black;
+    }
+
 
     .red {
       background: rgb(231, 43, 29);

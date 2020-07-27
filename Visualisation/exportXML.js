@@ -80,8 +80,8 @@ function exportXML() {
                 var xml_verb = "<evidence type='experience' sub-type='verb-event'>" + ver + "</evidence>";
                 // console.log(regex_verb);
                 output = output.replace(regex_verb, xml_verb);
-                }
             }
+        }
             // If Experience Toggle Is Checked
             if (document.getElementById("expCheck").checked) {
             // Annotate NLTK Named Entities
@@ -131,10 +131,11 @@ function exportXML() {
                 output = output.replace(regex_cit,xml_cit);
             }
         }
+        
             // End of XML File
             output += "</article>";
             // Show In Console
-            console.log(output);
+            // console.log(output);
 
             // Export the XML file into a document
             var blob = new Blob([output], {

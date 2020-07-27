@@ -67,16 +67,15 @@ function getMimeType() {
 }
 
 function getCredibilityRating() {
-  // fetch("./language_wars.json")
-  //   .then(function (resp) {
-  //     return resp.json();
-  //   })
-  //   .then(function (data) {
-  //     var mime =
-  //       data[0].extracted_article.extracted_article.pattern_extraction
-  //         .mime_type;
-  //     document.getElementById("mimeType").innerHTML = "Mime Type:  " + mime;
-  //   });
+  fetch("./language_wars.json")
+    .then(function (resp) {
+      return resp.json();
+    })
+    .then(function (data) {
+      var score =
+        data[0].clarity_of_writing_analysis.clarity_of_writing_analysis.readability.flesch_reading_ease;
+      document.getElementById("credRating").innerHTML = "Credibility Rating:  " + score;
+    });
 }
 
 function getWholeArticle() {
@@ -92,42 +91,42 @@ function getWholeArticle() {
     });
 }
 
-function getReasoning() {
-  fetch("./language_wars.json")
-    .then(function (resp) {
-      return resp.json();
-    })
-    .then(function (data) {
-      var article =
-        data[0].keyword_analysis.keyword_analysis;
-      document.getElementById("reasonInfo").innerHTML = article;
-    });
-}
+// function getReasoning() {
+//   fetch("./language_wars.json")
+//     .then(function (resp) {
+//       return resp.json();
+//     })
+//     .then(function (data) {
+//       var article =
+//         data[0].keyword_analysis.keyword_analysis;
+//       document.getElementById("reasonInfo").innerHTML = article;
+//     });
+// }
 
-function getEvidence() {
-  fetch("./language_wars.json")
-    .then(function (resp) {
-      return resp.json();
-    })
-    .then(function (data) {
-      var article =
-        data[0].citations_analysis.citations_analysis.classified_citation_binary_counts;
-      document.getElementById("evidenceInfo").innerHTML = article;
-    });
-}
+// function getEvidence() {
+//   fetch("./language_wars.json")
+//     .then(function (resp) {
+//       return resp.json();
+//     })
+//     .then(function (data) {
+//       var article =
+//         data[0].citations_analysis.citations_analysis.classified_citation_binary_counts;
+//       document.getElementById("evidenceInfo").innerHTML = article;
+//     });
+// }
 
-function getCitations() {
-  fetch("./language_wars.json")
-    .then(function (resp) {
-      return resp.json();
-    })
-    .then(function (data) {
-      var article =
-        data[0].citations_analysis.citations_analysis.external_uris;
-      // var firstSplit = article.split("://");
-      // var secondSplit = firstSplit[1].split(",");
-      // var title = secondSplit[0];
-      document.getElementById("citationInfo").innerHTML = article;
-    });
-}
+// function getCitations() {
+//   fetch("./language_wars.json")
+//     .then(function (resp) {
+//       return resp.json();
+//     })
+//     .then(function (data) {
+//       var article =
+//         data[0].citations_analysis.citations_analysis.external_uris;
+//       var firstSplit = article.split("://");
+//       var secondSplit = firstSplit[1].split(",");
+//       var title = secondSplit[0];
+//       document.getElementById("citationInfo").innerHTML = article;
+//     });
+// }
 
