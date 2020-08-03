@@ -56,8 +56,8 @@ function exportXML() {
                 output = output.replace(exp_regex,xml_evidence);
             }
         }
-            // If Experience Toggle Is Checked
-            if (document.getElementById("expCheck").checked) {
+            // If Time Toggle Is Checked
+            if (document.getElementById("timeCheck").checked) {
             // Annotate Time Events    
             var timex =
                 data[0].event_analysis.event_analysis.timex_events;
@@ -68,8 +68,8 @@ function exportXML() {
                 output = output.replace(regex_timex, xml_timex);
             }
         }
-            // If Experience Toggle Is Checked
-            if (document.getElementById("expCheck").checked) {
+            // If Verb Toggle Is Checked
+            if (document.getElementById("verbCheck").checked) {
             // Annotate Verb Events
             var verb =
                 data[0].event_analysis.event_analysis.verb_events;
@@ -82,8 +82,8 @@ function exportXML() {
                 output = output.replace(regex_verb, xml_verb);
             }
         }
-            // If Experience Toggle Is Checked
-            if (document.getElementById("expCheck").checked) {
+            // If Named Entities Toggle Is Checked
+            if (document.getElementById("nameEnCheck").checked) {
             // Annotate NLTK Named Entities
             var nltk =
                 data[0].named_entity_analysis.named_entity_analysis.nltk_named_entities;
@@ -94,13 +94,17 @@ function exportXML() {
                 output = output.replace(regex_nltk, xml_nltk);
             }
         }
-            // If Experience Toggle Is Checked
-            if (document.getElementById("expCheck").checked) {
+            // If Pronoun Toggle Is Checked
+            if (document.getElementById("proCheck").checked) {
             // Annotated Pronouns
             var pronoun =
                 data[0].named_entity_analysis.named_entity_analysis.pronouns;
-            for (f in pronoun) {
-                var pro = pronoun[f];
+                const newPronouns = Array.from(new Set(pronoun.map(a => a[0])))
+                .map(pron => {
+                return pronoun.find(a => a[0] === pron)
+                })
+            for (f in newPronouns) {
+                var pro = newPronouns[f];
                 var p = pro[0];
                 var regex_pronoun = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)\\" + p + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)", "gmi");
                 var xml_pronoun = "<evidence type='experience' sub-type='pronoun'>" + p + "</evidence>";
@@ -134,6 +138,7 @@ function exportXML() {
         
             // End of XML File
             output += "</article>";
+
             // Show In Console
             // console.log(output);
 

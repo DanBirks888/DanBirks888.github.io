@@ -70,11 +70,11 @@
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
         <div class="row">
           <div class=" col-8">
-            <div class="overflow-auto">
+            <div class="overflow-auto" style="margin: 50px">
 
               <div class="tab-pane fade show active" id="mark8" role="tabpanel" aria-labelledby="nav-mark-tab">
                 <p id="articleInfo" class="text-justify"></p>
-                <script type="text/javascript" language="JavaScript"> getWholeArticle();</script>
+                <script type="text/javascript" language="JavaScript">getWholeArticle();</script>
               </div>
 
               <div class="tab-pane fade" id="rea8" role="tabpanel" aria-labelledby="nav-reason-tab">
@@ -91,7 +91,6 @@
                 <p id="citationInfo" class="text-justify"></p>
                 <!-- <script type="text/javascript" language="JavaScript"> getCitations();</script> -->
               </div>
-
             </div> <!-- Scrolling -->
           </div> <!-- Column -->
           <div class="col">
@@ -107,6 +106,22 @@
                   </li>
                   <li class="list-group-item">Experience<label class="switch "><input type="checkbox" id="expCheck"
                         onclick="highlightExperience()" class="success"><span class="slider round"></span>
+                    </label>
+                  </li>
+                  <li class="list-group-item">Named Entities<label class="switch "><input type="checkbox" id="nameEnCheck"
+                    onclick="highlightNamedEntity()" class="success"><span class="slider round"></span>
+                    </label>
+                  </li>
+                  <li class="list-group-item">Verb Events<label class="switch "><input type="checkbox" id="verbCheck"
+                    onclick="highlightVerbEvents()" class="success"><span class="slider round"></span>
+                    </label>
+                  </li>
+                  <li class="list-group-item">Time Events<label class="switch "><input type="checkbox" id="timeCheck"
+                    onclick="highlightTimeEvents()" class="success"><span class="slider round"></span>
+                    </label>
+                  </li>
+                  <li class="list-group-item">Pronouns<label class="switch "><input type="checkbox" id="proCheck"
+                    onclick="highlightPronouns()" class="success"><span class="slider round"></span>
                     </label>
                   </li>
                   <li class="list-group-item">Citations<label class="switch "><input type="checkbox" id="citCheck"
@@ -146,7 +161,7 @@
     }
 
     .overflow-auto {
-      height: 500px;
+      height: 700px;
     }
 
     .blank {
