@@ -84,6 +84,11 @@ function highlightVerbEvents() {
                 // Annotate Verb Events
                 var verb =
                 data[0].event_analysis.event_analysis.verb_events;
+                // const newVerb = Array.from(new Set(verb.map(a => a[0][0])))
+                // .map(verb1 => {
+                // return verb.find(a => a[0][0] === verb1)
+                // })
+                // console.log(newVerb);
                 for (d in verb) {
                     var ve = verb[d];
                     var ver = ve[0];
@@ -108,8 +113,12 @@ function highlightNamedEntity() {
                 // Annotate NLTK Named Entities
                 var nltk =
                 data[0].named_entity_analysis.named_entity_analysis.nltk_named_entities;
-                for (e in nltk) {
-                    var nl = nltk[e];
+                const newNameEn = Array.from(new Set(nltk.map(a => a[0])))
+                .map(ent => {
+                return nltk.find(a => a[0] === ent)
+                })
+                for (e in newNameEn) {
+                    var nl = newNameEn[e];
                     var regex_nltk = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + nl + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
                     article.markRegExp(regex_nltk, options);
                 }
