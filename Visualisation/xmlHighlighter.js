@@ -31,7 +31,7 @@ function highlightExperience() {
         })
         .then(function (data) {
             var article = new Mark(document.getElementById("articleInfo"));
-            var options = { className: "blue1", }
+            var options = { className: "blue", }
             if (document.getElementById("expCheck").checked) {
                 // Annotate Personal Experience Elements
                 var exp =
@@ -55,7 +55,7 @@ function highlightTimeEvents() {
         })
         .then(function (data) {
             var article = new Mark(document.getElementById("articleInfo"));
-            var options = { className: "blue2", }
+            var options = { className: "orange", }
             if (document.getElementById("timeCheck").checked) {
                 // Annotate Time Events    
                 var timex =
@@ -79,7 +79,7 @@ function highlightVerbEvents() {
         })
         .then(function (data) {
             var article = new Mark(document.getElementById("articleInfo"));
-            var options = { className: "blue3", }
+            var options = { className: "green", }
             if (document.getElementById("verbCheck").checked) {
                 // Annotate Verb Events
                 var verb =
@@ -108,7 +108,7 @@ function highlightNamedEntity() {
         })
         .then(function (data) {
             var article = new Mark(document.getElementById("articleInfo"));
-            var options = { className: "blue4", }
+            var options = { className: "pink", }
             if (document.getElementById("nameEnCheck").checked) {
                 // Annotate NLTK Named Entities
                 var nltk =
@@ -135,7 +135,7 @@ function highlightPronouns() {
         })
         .then(function (data) {
             var article = new Mark(document.getElementById("articleInfo"));
-            var options = { className: "blue5", }
+            var options = { className: "yellow", }
             if (document.getElementById("proCheck").checked) {
                 // Annotated Pronouns
                 var pronoun =

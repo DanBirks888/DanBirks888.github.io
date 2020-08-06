@@ -44,7 +44,6 @@
     </div>
   </div>
 
-
   <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
@@ -65,89 +64,85 @@
       </li>
     </ul>
 
-
     <div class="tab-content" id="myTabContent">
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="row">
-          <div class=" col-8">
-            <div class="overflow-auto" style="margin: 50px">
-
-              <div class="tab-pane fade show active" id="mark8" role="tabpanel" aria-labelledby="nav-mark-tab">
+        <div class="tab-pane fade show active" id="mark8" role="tabpanel" aria-labelledby="nav-mark-tab">
+          <div class="row">
+            <div class=" col-8">
+              <div class="overflow-auto" style="margin: 50px">
                 <p id="articleInfo" class="text-justify"></p>
-                <script type="text/javascript" language="JavaScript">getWholeArticle();</script>
+                  <script type="text/javascript" language="JavaScript">getWholeArticle();</script>
               </div>
-
-              <div class="tab-pane fade" id="rea8" role="tabpanel" aria-labelledby="nav-reason-tab">
-                <p id="reasonInfo" class="text-justify"></p>
-                <!-- <script type="text/javascript" language="JavaScript"> getReasoning();</script> -->
-              </div>
-
-              <div class="tab-pane fade" id="evi8" role="tabpanel" aria-labelledby="nav-evidence-tab">
-                <p id="evidenceInfo" class="text-justify"></p>
-                <!-- <script type="text/javascript" language="JavaScript"> getEvidence();</script> -->
-              </div>
-
-              <div class="tab-pane fade" id="cit8" role="tabpanel" aria-labelledby="nav-citation-tab">
-                <p id="citationInfo" class="text-justify"></p>
-                <!-- <script type="text/javascript" language="JavaScript"> getCitations();</script> -->
-              </div>
-            </div> <!-- Scrolling -->
-          </div> <!-- Column -->
-          <div class="col">
-            <div class="container">
+            </div>
               <div class="col">
-                <div class="card" style="margin:50px 0">
-                  <div class="card-header">
-                    <h2>Highlight</h2>
-                  </div>
-                  <li class="list-group-item">Reasoning<label class="switch "><input type="checkbox" id="reCheck"
-                        onclick="highlightReasoning()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Experience<label class="switch "><input type="checkbox" id="expCheck"
-                        onclick="highlightExperience()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Named Entities<label class="switch "><input type="checkbox" id="nameEnCheck"
-                    onclick="highlightNamedEntity()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Verb Events<label class="switch "><input type="checkbox" id="verbCheck"
-                    onclick="highlightVerbEvents()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Time Events<label class="switch "><input type="checkbox" id="timeCheck"
-                    onclick="highlightTimeEvents()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Pronouns<label class="switch "><input type="checkbox" id="proCheck"
-                    onclick="highlightPronouns()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Citations<label class="switch "><input type="checkbox" id="citCheck"
-                        onclick="highlightCitations()" class="success"><span class="slider round"></span>
-                    </label>
-                  </li>
-                  <li class="list-group-item">Code<label class="switch "><input type="checkbox" class="success">
-                      <span class="slider round"></span>
-                    </label>
-                  </li>
-                  <p></p>
-                  <button type="button" class="btn btn-outline-secondary btn-xl" id="export" onclick="exportXML()">
-                    EXPORT
-                  </button> <!-- Export Button -->
-                  <p></p>
-                </div> <!-- Right Hand Column-->
-              </div> <!-- Columns -->
-            </div> <!-- Container -->
-          </div> <!-- full container -->
-        </div> <!-- Row -->
-      </div> <!-- Shadow -->
-    </div> <!-- Tab Content-->
-  </div> <!-- Full Container -->
+                <div class="container">
+                  <div class="col">
+                    <div class="card" style="margin:50px 0">
+                      <div class="card-header">
+                        <h2>Highlight</h2>
+                      </div>
+                      <li class="list-group-item" style="color:red; font-size: 20px">Reasoning<label class="switch "><input type="checkbox" id="reCheck"
+                            onclick="highlightReasoning()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(38, 0, 255); font-size: 20px">Experience<label class="switch "><input type="checkbox" id="expCheck"
+                            onclick="highlightExperience()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(255, 0, 234); font-size: 20px">Named Entities<label class="switch "><input type="checkbox" id="nameEnCheck"
+                        onclick="highlightNamedEntity()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(57, 156, 0); font-size: 20px">Verb Events<label class="switch "><input type="checkbox" id="verbCheck"
+                        onclick="highlightVerbEvents()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(255, 145, 0); font-size: 20px">Time Events<label class="switch "><input type="checkbox" id="timeCheck"
+                        onclick="highlightTimeEvents()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(172, 175, 0); font-size: 20px">Pronouns<label class="switch "><input type="checkbox" id="proCheck"
+                        onclick="highlightPronouns()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(99, 0, 180); font-size: 20px">Citations<label class="switch "><input type="checkbox" id="citCheck"
+                            onclick="highlightCitations()" class="success"><span class="slider round"></span>
+                        </label>
+                      </li>
+                      <li class="list-group-item" style="color:rgb(0, 255, 179); font-size: 20px">Code<label class="switch "><input type="checkbox" class="success">
+                          <span class="slider round"></span>
+                        </label>
+                      </li>
+                      <p></p>
+                      <!-- This is the Export functionality -->
+                      <button type="button" class="btn btn-outline-secondary btn-xl" id="export" onclick="exportXML()">
+                        EXPORT
+                      </button> <!-- Export Button -->
+                      <p></p>
+                    </div> <!-- Right Hand Column-->
+                  </div> <!-- Col -->
+                </div> <!-- Container -->
+              </div> <!-- Col -->
+            </div> <!-- Row -->
+          </div> <!-- Tab Pane Fade -->
+            <div class="tab-pane fade" id="rea8" role="tabpanel" aria-labelledby="nav-reason-tab">
+              <p id="reasonInfo" class="text-justify"></p>
+              <!-- <script type="text/javascript" language="JavaScript"> getReasoning();</script> -->
+            </div>
 
-  <!-- This is the Export functionality -->
+            <div class="tab-pane fade" id="evi8" role="tabpanel" aria-labelledby="nav-evidence-tab">
+              <p id="evidenceInfo" class="text-justify"></p>
+              <!-- <script type="text/javascript" language="JavaScript"> getEvidence();</script> -->
+            </div>
 
+            <div class="tab-pane fade" id="cit8" role="tabpanel" aria-labelledby="nav-citation-tab">
+              <p id="citationInfo" class="text-justify"></p>
+              <!-- <script type="text/javascript" language="JavaScript"> getCitations();</script> -->
+            </div>
+          </div> <!-- Shadow Effect -->
+        </div> <!-- Tab Content -->
+
+  <!-- This is the CSS for the HTML -->
   <style type="text/css">
     .nav-tabs li a {
       font-size: 22px;
@@ -164,46 +159,48 @@
       height: 700px;
     }
 
-    .blank {
-      background: rgb(255, 255, 255);
-      color: black;
-    }
-
-    .purple {
-      background: rgb(162, 25, 216);
-      color: black;
-    }
-
-
     .red {
       background: rgb(231, 43, 29);
       color: black;
     }
 
-    .blue1 {
+    .blue {
       background: rgb(0, 68, 253);
       color: black;
     }
 
-    .blue2 {
-      background: rgb(68, 118, 255);
+    .pink {
+      background: rgb(255, 0, 234);
       color: black;
     }
 
-    .blue3 {
-      background: rgb(124, 159, 255);
+    .green {
+      background: rgb(57, 156, 0);
       color: black;
     }
 
-    .blue4 {
-      background: rgb(179, 197, 255);
+    .orange {
+      background: rgb(255, 145, 0);
       color: black;
     }
 
-    .blue5 {
-      background: rgb(224, 232, 255);
+    .yellow {
+      background: rgb(172, 175, 0);
       color: black;
     }
+
+    .purple {
+      background: rgb(99, 0, 180);
+      color: black;
+    }
+
+    .terq {
+      background: rgb(0, 255, 179);
+      color: black;
+    }
+
+ 
+
   </style>
   <!-- For the tabs -->
   <script src="./Extras/tooltip.js"></script>
