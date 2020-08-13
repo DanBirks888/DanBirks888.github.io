@@ -49,26 +49,26 @@
   <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="nav-mark-tab" data-toggle="tab" href="#mark8" role="tab" aria-controls="nav-mark"
+        <a class="nav-link active" id="mark-tab" data-toggle="tab" href="#mark" role="tab" aria-controls="mark"
           aria-selected="true">Marked Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="nav-reason-tab" data-toggle="tab" href="#rea8" role="tab" aria-controls="reason"
+        <a class="nav-link" id="reason-tab" data-toggle="tab" href="#reason" role="tab" aria-controls="reason"
           aria-selected="false">Reasoning</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="nav-evidence-tab" data-toggle="tab" href="#evi8" role="tab" aria-controls="evidence"
+        <a class="nav-link" id="evidence-tab" data-toggle="tab" href="#evidence" role="tab" aria-controls="evidence"
           aria-selected="false">Evidence</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="nav-citation-tab" data-toggle="tab" href="#cit8" role="tab" aria-controls="citation"
+        <a class="nav-link" id="citation-tab" data-toggle="tab" href="#citation" role="tab" aria-controls="citation"
           aria-selected="false">Citations</a>
       </li>
     </ul>
 
     <div class="tab-content" id="myTabContent">
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="tab-pane fade show active" id="mark8" role="tabpanel" aria-labelledby="nav-mark-tab">
+        <div class="tab-pane fade show active" id="mark" role="tabpanel" aria-labelledby="mark-tab">
           <div class="row">
             <div class=" col-8">
               <div class="overflow-auto" style="margin: 50px">
@@ -127,20 +127,18 @@
               </div> <!-- Col -->
             </div> <!-- Row -->
           </div> <!-- Tab Pane Fade -->
-            <div class="tab-pane fade" id="rea8" role="tabpanel" aria-labelledby="nav-reason-tab">
+            <div class="tab-pane fade" id="reason" role="tabpanel" aria-labelledby="reason-tab">
               <!-- <p id="reasonInfo" class="text-justify"></p> -->
-              <div class="container">
                 <canvas id="reasoningChart"></canvas>
-              </div>
               <!-- <script type="text/javascript" language="JavaScript"> getReasoning();</script> -->
             </div>
 
-            <div class="tab-pane fade" id="evi8" role="tabpanel" aria-labelledby="nav-evidence-tab">
+            <div class="tab-pane fade" id="evidence" role="tabpanel" aria-labelledby="evidence-tab">
               <p id="evidenceInfo" class="text-justify"></p>
               <!-- <script type="text/javascript" language="JavaScript"> getEvidence();</script> -->
             </div>
 
-            <div class="tab-pane fade" id="cit8" role="tabpanel" aria-labelledby="nav-citation-tab">
+            <div class="tab-pane fade" id="citation" role="tabpanel" aria-labelledby="citation-tab">
               <p id="citationInfo" class="text-justify"></p>
               <!-- <script type="text/javascript" language="JavaScript"> getCitations();</script> -->
             </div>
@@ -203,17 +201,7 @@
       background: rgb(0, 255, 179);
       color: black;
     }
-
-    /* .container {
-      width: auto;
-      height: auto;
-    }
-    .bar {
-      fill: chartreuse;
-    } */
- 
   </style>
-  <!-- For the tabs -->
   
   <script src="./Extras/tooltip.js"></script>
   <script src="FileSaver.min.js"></script>
@@ -222,12 +210,12 @@
   <script src="d3.js" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script>
+  <!-- <script>
     $(".nav li").on("click", function () {
       $(".nav li").removeClass("active");
       $(this).addClass("active");
     });
-  </script>
+  </script> -->
   <!-- For the tabs -->
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
