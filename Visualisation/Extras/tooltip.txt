@@ -1,0 +1,12 @@
+<h5 id="artName" class="hover-reveal" data-tooltip="This is the Article Name">Article Name:
+          <script type="text/javascript" language="JavaScript"> getArticleName();</script>
+        </h5>
+
+         class="hover-reveal" data-tooltip="This is the Article Name"
+
+          <div class="div-tooltip"></div>
+          
+
+  <script src="./Extras/tooltip.js"></script>
+
+    <link href="./Extras/hover.css" rel="stylesheet" type="text/css">
