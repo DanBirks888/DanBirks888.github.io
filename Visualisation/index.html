@@ -127,26 +127,30 @@
             </div> <!-- Row -->
           </div> <!-- Tab Pane Fade -->
             <div class="tab-pane fade" id="reason" role="tabpanel" aria-labelledby="reason-tab">
+              <h1 class="text-center">Article Credibility Overview</h1>
+              <p></p>
                 <canvas id="reasoningChart"></canvas>
-                <div class="container">
                   <div class="row row-cols-2">
                     <div class="col" style="margin-top:50px">
-                      <h2>Claims VS Evidence</h2>
-                        <canvas id="pieChart"></canvas>
+                      
                       </div>
                     </div>
-                  </div>
-              <!-- <script type="text/javascript" language="JavaScript"> getReasoning();</script> -->
             </div>
 
             <div class="tab-pane fade" id="evidence" role="tabpanel" aria-labelledby="evidence-tab">
-              <p id="evidenceInfo" class="text-justify"></p>
-              <!-- <script type="text/javascript" language="JavaScript"> getEvidence();</script> -->
+              <h2>Claims VS Evidence</h2>
+              <div class="row row-cols-2">
+                <div class="col" style="margin-top:50px">
+                  <canvas id="pieChart"></canvas>
+                  </div>
+                </div>
+                
             </div>
 
             <div class="tab-pane fade" id="citation" role="tabpanel" aria-labelledby="citation-tab">
-              <p id="citationInfo" class="text-justify"></p>
-              <!-- <script type="text/javascript" language="JavaScript"> getCitations();</script> -->
+              <h1 class="text-center">Citations Used</h1>
+              <p></p>
+                <canvas id="citationsBar"></canvas>
             </div>
           </div> <!-- Shadow Effect -->
         </div> <!-- Tab Content -->

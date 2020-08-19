@@ -24,13 +24,38 @@ fetch("./language_wars.json")
             data[0].citations_analysis.citations_analysis.classified_external_uris;
 
 
-            // None Duplicated Citations Count  
+            // None Duplicated Citations Method
             const citations = Array.from(new Set(oldCitations.map(a => a.domain)))
             .map(domain => {
             return oldCitations.find(a => a.domain === domain)
             });
-            // Citations Count
+
+            // Number Of None-Duplicated Citations in Article
             var citationsSize = citations.length;
+
+            // Citations Names
+            var citNames = [];
+            for (citName in citations) {
+              var c = citations[citName].domain;
+              citNames[citName] = c;
+            }
+
+            // Make new array of Just Domain Names
+            var justDomain = [];
+            for (domName in oldCitations) {
+              var d = oldCitations[domName].domain
+              justDomain[domName] = d;
+            }
+
+            // Count Array of Citations to Check for Duplicates
+            var count = {};
+            justDomain.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+
+            // Citations Largest Number First
+            var citationCount = [];
+            for(var o in count) {
+                citationCount.push(count[o]);
+            }
 
             // Reasoning Count
             var reaAmount = 0;
@@ -56,14 +81,25 @@ fetch("./language_wars.json")
             // Add Filtered Article to output
             var wholeArticle = "";
             wholeArticle += oldArticle;
-            // console.log(wholeArticle);
-            // Divide Article into Array of Lines
-            // var regexArticle = new RegExp(wholeArticle);
-            // var result = [];
-            // result = Regex.Split(regexArticle, "\r\n|\r|\n");
-            // console.log(result);
-
-            // Pie Chart Evidence Count
+            // Divide Article into Array Line by Line
+            var linesArticle = wholeArticle.split(/[\r\n]+/g);
+            // Count Total Lines and Name them For Chart
+            var sentence = [];
+            for (line in linesArticle) {
+              sentence[line] = "Sentence " + line;
+            }
+//var r = 0; r < linesArticle; r++
+            // Reasoning Count per Line
+            var rePerLine = [];
+            for (r in linesArticle) {
+              for (rr in reasoning) {
+                var regexMatcher = reasoning[rr];
+              }
+              
+            //   var regexExp = new RegExp('(\\ |\\“|\\-)' + regexMatcher + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
+            //   var count = (linesArticle[r].match('(\\ |\\“|\\-)' + regexMatcher + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi") || []).length;
+            // var test = count.reduce((a, b) => a + b);
+            }
 
             // Data for the Charts
             var chartData = {
@@ -75,9 +111,9 @@ fetch("./language_wars.json")
                 this_feb: [65, 59, 90, 81, 56, 55, 40],
                 last_feb: [28, 48, 40, 19, 96, 27, 100]
               },
-              friend_progress:{
-                friends: ["Me", "Megan", "Euan", "Manuel", "Kate", "Hannah", "Josh"],
-                scores: [1023, 1000,1198,200,678,432,878]
+              citationTypes:{
+                friends:citNames,
+                scores:citationCount
               },
               goals:{
                 labels: ["Goals met", "Running", "Swimming", "Walking", "Drinking/Nutrition"],
@@ -93,20 +129,20 @@ fetch("./language_wars.json")
             var myLineChart = new Chart(ctxL, {
             type: 'line',
             data: {
-            labels: ["01/02", "02/02", "03/02", "04/02", "05/02", "06/02", "07/02", "08/02", "09/02", "10/02", "11/02", "12/02", "13/02", "14/02", "15/02", "16/02", "17/02", "18/02", "19/02", "20/02", "21/02", "22/02", "23/02", "24/02", "25/02", "26/02", "27/02", "28/02", "29/02"],
+            labels: sentence,
             datasets: [{
-            label: "February 2019",
+            label: "Reasoning",
             data: chartData.steps.last_feb,
             backgroundColor: [
-            'rgba(105, 0, 132, .2)',
+            'rgba(231, 43, 29, .2)',
             ],
             borderColor: [
-            'rgba(200, 99, 132, .7)',
+            'rgba(231, 43, 29, .7)',
             ],
             borderWidth: 2
             },
             {
-            label: "February 2020",
+            label: "Citations",
             data: chartData.steps.this_feb,
             backgroundColor: [
             'rgba(0, 137, 132, .2)',
@@ -122,6 +158,35 @@ fetch("./language_wars.json")
             responsive: true
             }
             });
+
+            new Chart(document.getElementById("citationsBar"), {
+              "type": "horizontalBar",
+              "data": {
+              "labels": chartData.citationTypes.friends,
+              "datasets": [{
+              "label": "Citation Uses",
+              "data": chartData.citationTypes.scores,
+              "fill": false,
+              "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
+              ],
+              "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
+              "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
+              ],
+              "borderWidth": 1
+              }]
+              },
+              "options": {
+              "scales": {
+              "xAxes": [{
+              "ticks": {
+              "beginAtZero": true
+              }
+              }]
+              }
+              }
+              });
 
             // Pie Chart
             var ctxP = document.getElementById("pieChart").getContext('2d');
@@ -153,7 +218,7 @@ fetch("./language_wars.json")
             dataArr.map(data => {
             sum += data;
             });
-            let percentage = (value * 100 / sum).toFixed(2) + "%";
+            let percentage = (value * 10000 / sum).toFixed(2) + "%";
             return percentage;
             },
             color: 'white',
@@ -167,6 +232,7 @@ fetch("./language_wars.json")
         }
       }
     }
+    
   });
  });
 
