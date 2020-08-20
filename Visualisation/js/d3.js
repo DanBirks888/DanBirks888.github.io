@@ -88,24 +88,38 @@ fetch("./language_wars.json")
             for (line in linesArticle) {
               sentence[line] = "Sentence " + line;
             }
-//var r = 0; r < linesArticle; r++
+                // var regex_timex = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;\\“|\\*)\\' + ti + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                // var regex_verb = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + ver + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi"); 
+                // var regex_nltk = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + nl + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                // var regex_pronoun = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)\\" + p + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)", "gmi");
             // Reasoning Count per Line
-            var rePerLine = [];
-            for (r in linesArticle) {
-              for (rr in reasoning) {
-                var regexMatcher = reasoning[rr];
-              }
-              
-            //   var regexExp = new RegExp('(\\ |\\“|\\-)' + regexMatcher + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
-            //   var count = (linesArticle[r].match('(\\ |\\“|\\-)' + regexMatcher + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi") || []).length;
-            // var test = count.reduce((a, b) => a + b);
-            }
+            var numberReasoningMarkers = new Array(linesArticle.length).fill(0);
+            var numberPExperienceMarkers = new Array(linesArticle.length).fill(0);
+            var numberEntityMarkers = new Array(linesArticle.length).fill(0);
+            var numberVerbMarkers = new Array(linesArticle.length).fill(0);
+            var numberTimeMarkers = new Array(linesArticle.length).fill(0);
+            for (line in linesArticle) {
+              for (r in reasoning) {
+                var regex_reason = new RegExp('(\\ |\\“|\\-)' + reasoning[r].marker + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
+                if (linesArticle[line].match(regex_reason)) {
+                  numberReasoningMarkers[line] += 1;
+                  console.log(reasoning[r].marker);
+                }
+              } 
+              for (p in personal_experience) {
+                var exp_regex = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + personal_experience[p].marker + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                if (linesArticle[line].match(exp_regex)) {
+                  numberPExperienceMarkers[line] += 1;
+                }
+              }    
+           } // Lines In Article Full For Loop
 
+            console.log(numberPExperienceMarkers);
             // Data for the Charts
             var chartData = {
               steps:{
-                this_feb: [8784, 9000, 9767, 3745, 9873, 9872, 7868, 12872, 8772, 9873, 10928, 7684, 9874, 3432, 9798, 20877, 8098, 9882, 7080, 9887, 11072, 9018, 7897, 11203, 10928, 10928, 8734, 8021, 13423],
-                last_feb: [10845, 9876, 3252, 11045, 9432, 9453, 9999, 10845, 5869, 7898, 9342, 9222, 10001, 11789, 8989, 9999, 8989, 10222, 7777, 12300, 10111, 8798, 7087, 6769, 9808, 8985, 4584, 9999]
+                reasonData:numberReasoningMarkers,
+                pExpData:numberPExperienceMarkers
               },
               active_scores:{
                 this_feb: [65, 59, 90, 81, 56, 55, 40],
@@ -132,7 +146,7 @@ fetch("./language_wars.json")
             labels: sentence,
             datasets: [{
             label: "Reasoning",
-            data: chartData.steps.last_feb,
+            data: chartData.steps.reasonData,
             backgroundColor: [
             'rgba(231, 43, 29, .2)',
             ],
@@ -142,8 +156,8 @@ fetch("./language_wars.json")
             borderWidth: 2
             },
             {
-            label: "Citations",
-            data: chartData.steps.this_feb,
+            label: "Personal Experience",
+            data: chartData.steps.pExpData,
             backgroundColor: [
             'rgba(0, 137, 132, .2)',
             ],
