@@ -88,22 +88,21 @@ fetch("./language_wars.json")
             for (line in linesArticle) {
               sentence[line] = "Sentence " + line;
             }
-                // var regex_timex = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;\\“|\\*)\\' + ti + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
-                // var regex_verb = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + ver + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi"); 
-                // var regex_nltk = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + nl + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
-                // var regex_pronoun = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)\\" + p + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)", "gmi");
             // Reasoning Count per Line
             var numberReasoningMarkers = new Array(linesArticle.length).fill(0);
             var numberPExperienceMarkers = new Array(linesArticle.length).fill(0);
             var numberEntityMarkers = new Array(linesArticle.length).fill(0);
             var numberVerbMarkers = new Array(linesArticle.length).fill(0);
             var numberTimeMarkers = new Array(linesArticle.length).fill(0);
+            var numberPronounMarkers = new Array(linesArticle.length).fill(0);
+            var numberCitationsMarkers = new Array(linesArticle.length).fill(0);
+            var numberCodeMarkers = new Array(linesArticle.length).fill(0);
+            // For Loops which store the amount of markers Per Line
             for (line in linesArticle) {
               for (r in reasoning) {
                 var regex_reason = new RegExp('(\\ |\\“|\\-)' + reasoning[r].marker + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
                 if (linesArticle[line].match(regex_reason)) {
                   numberReasoningMarkers[line] += 1;
-                  console.log(reasoning[r].marker);
                 }
               } 
               for (p in personal_experience) {
@@ -111,15 +110,51 @@ fetch("./language_wars.json")
                 if (linesArticle[line].match(exp_regex)) {
                   numberPExperienceMarkers[line] += 1;
                 }
-              }    
+              }
+              for (n in named_entites) {
+                var regex_nltk = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + named_entites[n] + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                if (linesArticle[line].match(regex_nltk)) {
+                  numberEntityMarkers[line] += 1;
+                }
+              }
+              for (v in verb_events) {
+                var regex_verb = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)\\' + verb_events[v][0] + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi"); 
+                if (linesArticle[line].match(regex_verb)) {
+                  numberVerbMarkers[line] += 1;
+                }
+              }  
+              for (t in timex_events) {
+                var regex_timex = new RegExp('(\\ |\\,|\\.|\\!|\\?|\\:|\\;\\“|\\*)\\' + timex_events[t] + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“|\\*)', "gmi");
+                if (linesArticle[line].match(regex_timex)) {
+                  numberTimeMarkers[line] += 1;
+                }
+              }  
+              for (p in pronouns) {
+                var regex_pronoun = new RegExp("(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)\\" + pronouns[p][0] + "(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\*)", "gmi");
+                if (linesArticle[line].match(regex_pronoun)) {
+                  numberPronounMarkers[line] += 1;
+                }
+              }  
+              for (ci in oldCitations) {
+                var domain = oldCitations[ci].domain;
+                var regex_cit = new RegExp(domain + ".+?(?= )", "gmi");
+                if (linesArticle[line].match(regex_cit)) {
+                  numberCitationsMarkers[line] += 1;
+                }
+              }  
            } // Lines In Article Full For Loop
 
-            console.log(numberPExperienceMarkers);
             // Data for the Charts
             var chartData = {
               steps:{
                 reasonData:numberReasoningMarkers,
-                pExpData:numberPExperienceMarkers
+                pExpData:numberPExperienceMarkers,
+                entityData:numberEntityMarkers,
+                verbData:numberVerbMarkers,
+                timeData:numberTimeMarkers,
+                proData:numberPronounMarkers,
+                citData:numberCitationsMarkers,
+                codeData:numberCodeMarkers
               },
               active_scores:{
                 this_feb: [65, 59, 90, 81, 56, 55, 40],
@@ -144,30 +179,98 @@ fetch("./language_wars.json")
             type: 'line',
             data: {
             labels: sentence,
-            datasets: [{
-            label: "Reasoning",
-            data: chartData.steps.reasonData,
-            backgroundColor: [
-            'rgba(231, 43, 29, .2)',
-            ],
-            borderColor: [
-            'rgba(231, 43, 29, .7)',
-            ],
-            borderWidth: 2
+            datasets: [
+            {
+              label: "Reasoning",
+              data: chartData.steps.reasonData,
+              backgroundColor: [
+              'rgba(231, 43, 29, .2)',
+              ],
+              borderColor: [
+              'rgba(231, 43, 29, .7)',
+              ],
+              borderWidth: 2
             },
             {
-            label: "Personal Experience",
-            data: chartData.steps.pExpData,
-            backgroundColor: [
-            'rgba(0, 137, 132, .2)',
-            ],
-            borderColor: [
-            'rgba(0, 10, 130, .7)',
-            ],
-            borderWidth: 2
-            }
-            ]
+              label: "Personal Experience",
+              data: chartData.steps.pExpData,
+              backgroundColor: [
+              'rgba(0, 137, 132, .2)',
+              ],
+              borderColor: [
+              'rgba(0, 10, 130, .7)',
+              ],
+              borderWidth: 2
             },
+            {
+              label: "Named Entities",
+              data: chartData.steps.entityData,
+              backgroundColor: [
+              'rgba(255, 0, 234, .2)',
+              ],
+              borderColor: [
+              'rgba(255, 0, 234, .7)',
+              ],
+              borderWidth: 2
+              },
+            {
+              label: "Verb Events",
+              data: chartData.steps.verbData,
+              backgroundColor: [
+              'rgba(57, 156, 0, .2)',
+              ],
+              borderColor: [
+              'rgba(57, 156, 0, .7)',
+              ],
+              borderWidth: 2
+            },
+            {
+              label: "Time Events",
+              data: chartData.steps.timeData,
+              backgroundColor: [
+              'rgba(255, 145, 0, .2)',
+              ],
+              borderColor: [
+              'rgba(255, 145, 0, .7)',
+              ],
+              borderWidth: 2
+            },
+            {
+              label: "Pronouns",
+              data: chartData.steps.proData,
+              backgroundColor: [
+              'rgba(172, 175, 0, .2)',
+              ],
+              borderColor: [
+              'rgba(172, 175, 0, .7)',
+              ],
+              borderWidth: 2
+            },
+            {
+              label: "Citations",
+              data: chartData.steps.citData,
+              backgroundColor: [
+              'rgba(99, 0, 180, .2)',
+              ],
+              borderColor: [
+              'rgba(99, 0, 180, .7)',
+              ],
+              borderWidth: 2
+            },
+            {
+              label: "Code",
+              data: chartData.steps.codeData,
+              backgroundColor: [
+              'rgba(0, 255, 179, .2)',
+              ],
+              borderColor: [
+              'rgba(0, 255, 179, .7)',
+              ],
+              borderWidth: 2
+            },
+
+          ] // Datasets Ending
+        }, // MyLineChart
             options: {
             responsive: true
             }
