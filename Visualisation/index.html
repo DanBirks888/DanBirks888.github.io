@@ -128,22 +128,31 @@
           </div> <!-- Tab Pane Fade -->
             <div class="tab-pane fade" id="reason" role="tabpanel" aria-labelledby="reason-tab">
               <h1 class="text-center">Article Credibility Overview</h1>
-              <p></p>
-                <canvas id="reasoningChart"></canvas>
-                  <div class="row row-cols-2">
-                    <div class="col" style="margin-top:50px">
-                      
-                      </div>
+               
+                <div class="row row-cols-2">
+                  <div class="col" style="margin-top:50px">
+                    <h3 id="sentenceAverage" class="text-center"></h3>
                     </div>
+                    <div class="col" style="margin-top:50px">
+                      <h3 id="lessThanAmount" class="text-center"></h3>
+                    </div>
+                    </div>
+                    <p></p>
+                    <canvas id="reasoningChart"></canvas>
             </div>
 
             <div class="tab-pane fade" id="evidence" role="tabpanel" aria-labelledby="evidence-tab">
-              <h2>Claims VS Evidence</h2>
+              <h1 class="text-center">Reasoning VS Evidence Charts</h1>
               <div class="row row-cols-2">
                 <div class="col" style="margin-top:50px">
+                  <h3 class="text-center">Reasoning VS Evidence</h3>
                   <canvas id="pieChart"></canvas>
                   </div>
+                  <div class="col" style="margin-top:50px">
+                  <h3 class="text-center">Claims VS Evidence</h3>
+                  <canvas id="doughnutChart"></canvas>
                 </div>
+              </div>
                 
             </div>
 

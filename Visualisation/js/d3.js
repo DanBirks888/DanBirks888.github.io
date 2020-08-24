@@ -1,3 +1,4 @@
+
 fetch("./language_wars.json")
         .then(function (resp) {
             return resp.json();
@@ -62,12 +63,13 @@ fetch("./language_wars.json")
             for (reCount in reasoning) {
               reaAmount += reasoning[reCount].ngrams_count;
             }
+
             // Claim Count
             var claimAmount = 0;
             for (claimCount in pronouns) {
               claimAmount ++;
             }
-
+            
             // Place Article In Temporary Variable
             var oldArticle = "";
             oldArticle += article;
@@ -144,6 +146,23 @@ fetch("./language_wars.json")
               }  
            } // Lines In Article Full For Loop
 
+            // Mean Of The Sentence Count
+            var meanAmount = 0;
+            for (mean in linesArticle) { meanAmount += linesArticle[mean].split(" ").length; }
+            var me = meanAmount / linesArticle.length;
+            var finalMeanAmount = Math.round(me);
+            document.getElementById("sentenceAverage").innerHTML = "Average Sentence Length: " + finalMeanAmount + " Words";
+
+            // Sentences Less Than 5 Words
+            var senAmount = 0;
+            for (sen in linesArticle) { 
+              if (linesArticle[sen].split("").length <= 10) {
+                senAmount++;
+              }
+              var smallSen = linesArticle.length / senAmount;
+              document.getElementById("lessThanAmount").innerHTML = "No. Short Sentences: " + smallSen + "%";
+            }
+
             // Data for the Charts
             var chartData = {
               steps:{
@@ -161,19 +180,20 @@ fetch("./language_wars.json")
                 last_feb: [28, 48, 40, 19, 96, 27, 100]
               },
               citationTypes:{
-                friends:citNames,
-                scores:citationCount
+                labels:citNames,
+                data:citationCount
               },
               goals:{
-                labels: ["Goals met", "Running", "Swimming", "Walking", "Drinking/Nutrition"],
-                data: [300, 50, 100, 40, 120]
+                labels: ["Claims", "Evidence"],
+                data: [claimAmount,citationsSize]
               },
               reasoningEvidenceCheck:{
-                labels: ["Claims", "Evidence"],
-                data: [claimCount,citationsSize]
+                labels: ["Reasoning", "Evidence"],
+                data: [reaAmount,citationsSize]
               }
             }
                 
+            // Overview Chart
             var ctxL = document.getElementById("reasoningChart").getContext('2d');
             var myLineChart = new Chart(ctxL, {
             type: 'line',
@@ -268,42 +288,59 @@ fetch("./language_wars.json")
               ],
               borderWidth: 2
             },
-
-          ] // Datasets Ending
-        }, // MyLineChart
+            ] // Datasets Ending
+            }, // MyLineChart
             options: {
             responsive: true
             }
             });
 
+            // Citations Bar Chart To List Duplicates
             new Chart(document.getElementById("citationsBar"), {
-              "type": "horizontalBar",
-              "data": {
-              "labels": chartData.citationTypes.friends,
-              "datasets": [{
-              "label": "Citation Uses",
-              "data": chartData.citationTypes.scores,
-              "fill": false,
-              "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
-              "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
-              "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
-              ],
-              "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
-              "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
-              ],
-              "borderWidth": 1
-              }]
-              },
-              "options": {
-              "scales": {
-              "xAxes": [{
-              "ticks": {
-              "beginAtZero": true
-              }
-              }]
-              }
-              }
-              });
+            "type": "horizontalBar",
+            "data": {
+            "labels": chartData.citationTypes.labels,
+            "datasets": [{
+            "label": "Citation Uses",
+            "data": chartData.citationTypes.data,
+            "fill": false,
+            "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
+            "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
+            ],
+            "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
+            "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
+            ],
+            "borderWidth": 1
+            }]
+            },
+            "options": {
+            "scales": {
+            "xAxes": [{
+            "ticks": {
+            "beginAtZero": true
+            }
+            }]
+            }
+            }
+            });
+
+            // Doughnut Chart
+            var ctxD = document.getElementById("doughnutChart").getContext('2d');
+            var myLineChart = new Chart(ctxD, {
+            type: 'doughnut',
+            data: {
+            labels: chartData.goals.labels,
+            datasets: [{
+            data: chartData.goals.data,
+            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+            }]
+            },
+            options: {
+            responsive: true
+            }
+            });
 
             // Pie Chart
             var ctxP = document.getElementById("pieChart").getContext('2d');
@@ -335,7 +372,7 @@ fetch("./language_wars.json")
             dataArr.map(data => {
             sum += data;
             });
-            let percentage = (value * 10000 / sum).toFixed(2) + "%";
+            let percentage = (value * 100 / sum).toFixed(2) + "%";
             return percentage;
             },
             color: 'white',
@@ -349,7 +386,6 @@ fetch("./language_wars.json")
         }
       }
     }
-    
   });
  });
 
