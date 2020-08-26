@@ -63,13 +63,36 @@ fetch("./language_wars.json")
             for (reCount in reasoning) {
               reaAmount += reasoning[reCount].ngrams_count;
             }
-
-            // Claim Count
-            var claimAmount = 0;
-            for (claimCount in pronouns) {
-              claimAmount ++;
+            // Experience Count
+            var expAmount = 0;
+            for (expCount in personal_experience) {
+              expAmount += personal_experience[expCount].ngrams_count;
             }
-            
+            // Named Entities Count
+            var entityAmount = 0;
+            for (entCount in named_entites) {
+              entityAmount ++;
+            }
+            // Verb Count
+            var verbAmount = 0;
+            for (verbCount in verb_events) {
+              verbAmount ++;
+            }
+            // Time Count
+            var timeAmount = 0;
+            for (timeCount in timex_events) {
+              timeAmount ++;
+            }
+            var proAmount = 0;
+            for (claimCount in pronouns) {
+              proAmount ++;
+            }
+            var citAmount = 0;
+            for (citCount in oldCitations) {
+              citAmount ++;
+            }
+            var codeAmount = 0;
+
             // Place Article In Temporary Variable
             var oldArticle = "";
             oldArticle += article;
@@ -165,7 +188,7 @@ fetch("./language_wars.json")
 
             // Data for the Charts
             var chartData = {
-              steps:{
+              overviewData:{
                 reasonData:numberReasoningMarkers,
                 pExpData:numberPExperienceMarkers,
                 entityData:numberEntityMarkers,
@@ -185,16 +208,20 @@ fetch("./language_wars.json")
               },
               goals:{
                 labels: ["Claims", "Evidence"],
-                data: [claimAmount,citationsSize]
+                data: [proAmount,citationsSize]
               },
               reasoningEvidenceCheck:{
                 labels: ["Reasoning", "Evidence"],
                 data: [reaAmount,citationsSize]
+              },
+              allElements:{
+                labels: ["Reasoning", "Personal Experience", "Named Entities", "Verb Events", "Time Events", "Pronouns", "Citations", "Code"],
+                data:[reaAmount,expAmount,entityAmount,verbAmount,timeAmount,proAmount,citAmount,codeAmount]
               }
             }
                 
             // Overview Chart
-            var ctxL = document.getElementById("reasoningChart").getContext('2d');
+            var ctxL = document.getElementById("overviewChart").getContext('2d');
             var myLineChart = new Chart(ctxL, {
             type: 'line',
             data: {
@@ -202,7 +229,7 @@ fetch("./language_wars.json")
             datasets: [
             {
               label: "Reasoning",
-              data: chartData.steps.reasonData,
+              data: chartData.overviewData.reasonData,
               backgroundColor: [
               'rgba(231, 43, 29, .2)',
               ],
@@ -213,18 +240,18 @@ fetch("./language_wars.json")
             },
             {
               label: "Personal Experience",
-              data: chartData.steps.pExpData,
+              data: chartData.overviewData.pExpData,
               backgroundColor: [
               'rgba(0, 137, 132, .2)',
               ],
               borderColor: [
-              'rgba(0, 10, 130, .7)',
+              'rgba(0, 137, 132, .7)',
               ],
               borderWidth: 2
             },
             {
               label: "Named Entities",
-              data: chartData.steps.entityData,
+              data: chartData.overviewData.entityData,
               backgroundColor: [
               'rgba(255, 0, 234, .2)',
               ],
@@ -235,7 +262,7 @@ fetch("./language_wars.json")
               },
             {
               label: "Verb Events",
-              data: chartData.steps.verbData,
+              data: chartData.overviewData.verbData,
               backgroundColor: [
               'rgba(57, 156, 0, .2)',
               ],
@@ -246,7 +273,7 @@ fetch("./language_wars.json")
             },
             {
               label: "Time Events",
-              data: chartData.steps.timeData,
+              data: chartData.overviewData.timeData,
               backgroundColor: [
               'rgba(255, 145, 0, .2)',
               ],
@@ -257,7 +284,7 @@ fetch("./language_wars.json")
             },
             {
               label: "Pronouns",
-              data: chartData.steps.proData,
+              data: chartData.overviewData.proData,
               backgroundColor: [
               'rgba(172, 175, 0, .2)',
               ],
@@ -268,7 +295,7 @@ fetch("./language_wars.json")
             },
             {
               label: "Citations",
-              data: chartData.steps.citData,
+              data: chartData.overviewData.citData,
               backgroundColor: [
               'rgba(99, 0, 180, .2)',
               ],
@@ -279,7 +306,7 @@ fetch("./language_wars.json")
             },
             {
               label: "Code",
-              data: chartData.steps.codeData,
+              data: chartData.overviewData.codeData,
               backgroundColor: [
               'rgba(0, 255, 179, .2)',
               ],
@@ -292,6 +319,39 @@ fetch("./language_wars.json")
             }, // MyLineChart
             options: {
             responsive: true
+            }
+            });
+
+            // Chart to List All Elements Vertical Bar Chart
+            new Chart(document.getElementById("allElementsBar"), {
+            "type": "bar",
+            "data": {
+            "labels":chartData.allElements.labels,
+            "datasets": [{
+            "label": ["All Elements"],
+            "data": chartData.allElements.data,
+            "fill": false,
+            "backgroundColor": ["rgba(231, 43, 29, 0.2)", "rgba(0, 137, 132, 0.2)",
+            "rgba(255, 0, 234, 0.2)", "rgba(57, 156, 0, 0.2)", "rgba(255, 145, 0, 0.2)",
+            "rgba(172, 175, 0, 0.2)", "rgba(99, 0, 180, 0.2)", "rgba(0, 255, 179, 0.2)"
+            ],
+            "borderColor": ["rgb(231, 43, 29)", "rgb(0, 137, 132)", "rgb(255, 0, 234)",
+            "rgb(57, 156, 0)", "rgb(255, 145, 0)", "rgb(172, 175, 0)", "rgb(99, 0, 180)", "rgb(0, 255, 179)"
+            ],
+            "borderWidth": 1
+            }]
+            },
+            "options": {
+            "legend": {
+              "display": false
+            },
+            "scales": {
+            "xAxes": [{
+            "ticks": {
+            "beginAtZero": true
+            }
+            }]
+            }
             }
             });
 
@@ -315,6 +375,9 @@ fetch("./language_wars.json")
             }]
             },
             "options": {
+            "legend": {
+              "display": false
+            },
             "scales": {
             "xAxes": [{
             "ticks": {

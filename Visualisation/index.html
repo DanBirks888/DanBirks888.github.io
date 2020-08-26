@@ -53,6 +53,14 @@
           aria-selected="true">Marked Up</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview"
+          aria-selected="false">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="element-tab" data-toggle="tab" href="#element" role="tab" aria-controls="element"
+          aria-selected="false">Elements</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" id="reason-tab" data-toggle="tab" href="#reason" role="tab" aria-controls="reason"
           aria-selected="false">Reasoning</a>
       </li>
@@ -126,19 +134,29 @@
               </div> <!-- Col -->
             </div> <!-- Row -->
           </div> <!-- Tab Pane Fade -->
+
+          <div class="tab-pane fade" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <h1 class="text-center">Article Credibility Overview</h1>
+            <div class="row row-cols-2">
+              <div class="col" style="margin-top:50px">
+                <h3 id="sentenceAverage" class="text-center"></h3>
+                </div>
+                <div class="col" style="margin-top:50px">
+                  <h3 id="lessThanAmount" class="text-center"></h3>
+                </div>
+                </div>
+                <p></p>
+            <canvas id="overviewChart"></canvas>
+          </div>
+
+          <div class="tab-pane fade" id="element" role="tabpanel" aria-labelledby="element-tab">
+            <h1 class="text-center">Total Elements In Article</h1>
+                  <canvas id="allElementsBar"></canvas>
+          </div>
+
             <div class="tab-pane fade" id="reason" role="tabpanel" aria-labelledby="reason-tab">
-              <h1 class="text-center">Article Credibility Overview</h1>
-               
-                <div class="row row-cols-2">
-                  <div class="col" style="margin-top:50px">
-                    <h3 id="sentenceAverage" class="text-center"></h3>
-                    </div>
-                    <div class="col" style="margin-top:50px">
-                      <h3 id="lessThanAmount" class="text-center"></h3>
-                    </div>
-                    </div>
-                    <p></p>
-                    <canvas id="reasoningChart"></canvas>
+              <h1 class="text-center">Reasoning</h1>
+
             </div>
 
             <div class="tab-pane fade" id="evidence" role="tabpanel" aria-labelledby="evidence-tab">
@@ -231,7 +249,7 @@
   <!-- D3 Charts Visulisation-->
   <script src="./libraries/jquery.min.js"></script>
   <script src="./libraries/mdb.min.js"></script>
-  <script src="./js/d3.js"></script>
+  <script src="./js/chart.js"></script>
   <!--Bootstrap JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
