@@ -393,12 +393,12 @@ fetch("./language_wars.json")
             var myLineChart = new Chart(ctxD, {
             type: 'doughnut',
             data: {
-            labels: chartData.goals.labels,
-            datasets: [{
-            data: chartData.goals.data,
-            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-            }]
+              labels: chartData.goals.labels,
+              datasets: [{
+                data: chartData.goals.data,
+                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                }]
             },
             options: {
             responsive: true
@@ -411,13 +411,13 @@ fetch("./language_wars.json")
             plugins: [ChartDataLabels],
             type: 'pie',
             data: {
-            labels: chartData.reasoningEvidenceCheck.labels,
-            datasets: [{
-            data: chartData.reasoningEvidenceCheck.data,
-            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-            }]
-            },
+              labels: chartData.reasoningEvidenceCheck.labels,
+              datasets: [{
+                data: chartData.reasoningEvidenceCheck.data,
+                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                }]
+              },
             options: {
             responsive: true,
             legend: {

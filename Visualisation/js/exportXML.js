@@ -146,6 +146,7 @@ function exportXML() {
             var blob = new Blob([output], {
                 type: "text/plain;charset=utf-8"
             });
-            saveAs(blob, "exportedXML");
+            var fileName = document.getElementById("user").value;
+            saveAs(blob, fileName);
         }, false);
 }
