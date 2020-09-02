@@ -207,7 +207,7 @@ fetch("./language_wars.json")
                 data:citationCount
               },
               goals:{
-                labels: ["Claims", "Evidence"],
+                labels: ["Pronouns", "Evidence"],
                 data: [proAmount,citationsSize]
               },
               reasoningEvidenceCheck:{
@@ -387,6 +387,9 @@ fetch("./language_wars.json")
             }
             }
             });
+
+            // Crazy Pie Chart
+            
 
             // Doughnut Chart
             var ctxD = document.getElementById("doughnutChart").getContext('2d');

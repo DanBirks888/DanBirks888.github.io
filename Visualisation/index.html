@@ -60,10 +60,10 @@
         <a class="nav-link" id="element-tab" data-toggle="tab" href="#element" role="tab" aria-controls="element"
           aria-selected="false">Elements</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" id="reason-tab" data-toggle="tab" href="#reason" role="tab" aria-controls="reason"
           aria-selected="false">Reasoning</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" id="evidence-tab" data-toggle="tab" href="#evidence" role="tab" aria-controls="evidence"
           aria-selected="false">Evidence</a>
@@ -127,7 +127,7 @@
                     </li>
                       <!-- This is the Export functionality -->
                       <button type="button" class="btn btn-outline-secondary btn-xl" id="export" onclick="exportXML()">
-                        EXPORT
+                        EXPORT XML
                       </button> <!-- Export Button -->
                     </div> <!-- Right Hand Column-->
                   </div> <!-- Col -->
@@ -155,10 +155,10 @@
                   <canvas id="allElementsBar"></canvas>
           </div>
 
-            <div class="tab-pane fade" id="reason" role="tabpanel" aria-labelledby="reason-tab">
+            <!-- <div class="tab-pane fade" id="reason" role="tabpanel" aria-labelledby="reason-tab">
               <h1 class="text-center">Reasoning</h1>
-
-            </div>
+              <canvas id="chart-area" style="display: block; width: 478px; height: 239px;" width="478" height="239" class="chartjs-render-monitor"></canvas>
+            </div> -->
 
             <div class="tab-pane fade" id="evidence" role="tabpanel" aria-labelledby="evidence-tab">
               <h1 class="text-center">Reasoning VS Evidence Charts</h1>
@@ -168,7 +168,7 @@
                   <canvas id="pieChart"></canvas>
                   </div>
                   <div class="col" style="margin-top:50px">
-                  <h3 class="text-center">Claims VS Evidence</h3>
+                  <h3 class="text-center">Pronouns VS Evidence</h3>
                   <canvas id="doughnutChart"></canvas>
                 </div>
               </div>

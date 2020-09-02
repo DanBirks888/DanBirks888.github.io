@@ -144,7 +144,7 @@ function exportXML() {
 
             // Export the XML file into a document
             var blob = new Blob([output], {
-                type: "text/plain;charset=utf-8"
+                type: "text/xml;charset=utf-8"
             });
             var fileName = document.getElementById("user").value;
             saveAs(blob, fileName);
