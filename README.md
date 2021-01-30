@@ -85,9 +85,7 @@ Example method of the export algorithm which would extract citations from the JS
 * The JSON file is local and was eventually intended to scale and itnegrate with a database and API so the user could select their own blog posts for assessing by the Visualisation Tool.
 
 ### All Screenshots of Visualisation Tool
-
+![Overview](https://user-images.githubusercontent.com/63508057/106367891-d903ec80-633d-11eb-83b2-e6319c4ce28f.png)
 ![Citations](https://user-images.githubusercontent.com/63508057/106367886-d7d2bf80-633d-11eb-9300-9f0180e8d537.png)
 ![Elements](https://user-images.githubusercontent.com/63508057/106367888-d86b5600-633d-11eb-8d10-91a283ec51a0.png)
 ![Evidence](https://user-images.githubusercontent.com/63508057/106367889-d86b5600-633d-11eb-9039-042a6fdea412.png)
-![Home](https://user-images.githubusercontent.com/63508057/106367890-d903ec80-633d-11eb-88cf-0272193709a6.png)
-![Overview](https://user-images.githubusercontent.com/63508057/106367891-d903ec80-633d-11eb-83b2-e6319c4ce28f.png)
