@@ -34,19 +34,15 @@ function highlightReasoning() {
                         data[0].keyword_analysis.keyword_analysis.reasoning_86;
 ```
 
-### Highlighting Tool
-In order to highlight using Mark.js, 
-
+### Regular Expression
+Grammer is inconsistent and difficult to guarantee a match everytime. This was the best expression for the use case and time frame
 ```javascript
-                var options = { className: "red", }
-                if (document.getElementById("reCheck").checked) {
                     for (a in reasoning) {
                         var reason = reasoning[a].marker;
                         var regex_reason = new RegExp('(\\ |\\“|\\-)' + reason + '(\\ |\\,|\\.|\\!|\\?|\\:|\\;|\\“)', "gmi");
                         article.markRegExp(regex_reason, options);
                     }
-                } 
-                else {
+                } else {
                     article.unmark(options);
 ```
 
