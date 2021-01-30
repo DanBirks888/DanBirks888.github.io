@@ -15,7 +15,7 @@ Assessing the credibility of Grey Literature is subjective. In order to assist i
 ### Libraries Used
 * Bootstrap - https://getbootstrap.com/
 * Chart.js - https://www.chartjs.org/
-*Mark.js - https://markjs.io/
+* Mark.js - https://markjs.io/
 
 ### Accessing the JSON File
 
